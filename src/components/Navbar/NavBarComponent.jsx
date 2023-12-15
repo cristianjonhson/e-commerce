@@ -11,7 +11,6 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        
         {/* Botón de navegación para pantallas pequeñas */}
         <button
           className="navbar-toggler"
@@ -44,12 +43,12 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
             </li>
           </ul>
         </div>
-
-        {/* Mi Tienda condicionado por tamaño de pantalla */}
-        <a className="navbar-brand d-lg-none" href="#">
-          Mi Tienda
-        </a>
       </div>
+
+      {/* Mi Tienda condicionado por tamaño de pantalla */}
+      <a className="navbar-brand d-lg-none" href="#">
+        Mi Tienda
+      </a>
     </nav>
   );
 };

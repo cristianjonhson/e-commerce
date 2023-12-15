@@ -7,6 +7,8 @@ import CartWidgetComponent from '../Cart/CartWidgetComponent';
 import NavLinkComponent from '../NavLink/NavLinkComponent';
 import ItemListContainerComponent from '../ItemListContainer/ItemListContainerComponent';
 
+// ...
+
 const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,29 +28,25 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
 
         {/* Área de colapso para pantallas pequeñas */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav me-auto">
             {/* Itera sobre los elementos de navegación */}
             {navItems.map((item, index) => (
               <NavLinkComponent key={index} href={item.href} text={item.text} />
             ))}
-
-            {/* Componente de carrito de compras */}
-            <li className="nav-item">
-              <CartWidgetComponent itemCount={cartItemCount} />
-            </li>
-
-            {/* Componente de lista de elementos */}
-            <li className="nav-item">
-              <ItemListContainerComponent greeting={greeting} />
-            </li>
           </ul>
-        </div>
-      </div>
 
-      {/* Mi Tienda condicionado por tamaño de pantalla */}
-      <a className="navbar-brand d-lg-none" href="#">
-        Mi Tienda
-      </a>
+          {/* Componente de carrito de compras */}
+          <CartWidgetComponent itemCount={cartItemCount} />
+
+          {/* Componente de lista de elementos */}
+          <ItemListContainerComponent greeting={greeting} />
+        </div>
+
+        {/* Mi Tienda condicionado por tamaño de pantalla */}
+        <a className="navbar-brand ms-auto d-lg-none" href="#">
+          Mi Tienda
+        </a>
+      </div>
     </nav>
   );
 };

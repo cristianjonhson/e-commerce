@@ -5,7 +5,7 @@
 import React from "react";
 
 // eslint-disable-next-line react/prop-types
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainerComponent = ({ greeting }) => {
   return (
     <div className="item-list-container">
       <h2>{greeting}</h2>
@@ -13,4 +13,4 @@ const ItemListContainer = ({ greeting }) => {
   );
 };
 
-export default ItemListContainer;
+export default ItemListContainerComponent;

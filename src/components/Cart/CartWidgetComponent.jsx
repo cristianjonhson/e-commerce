@@ -5,7 +5,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-const CartWidget = () => {
+const CartWidgetComponent = () => {
   const cartItemCount = 15;
 
   return (
@@ -16,4 +16,4 @@ const CartWidget = () => {
   );
 };
 
-export default CartWidget;
+export default CartWidgetComponent;

@@ -1,38 +1,52 @@
-/* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/prop-types */
-// NavBar.jsx
+/* eslint-disable no-unused-vars */
+// NavBarComponent.jsx
 
-// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import CartWidgetComponent from '../Cart/CartWidgetComponent';
-
 import NavLinkComponent from '../NavLink/NavLinkComponent';
 import ItemListContainerComponent from '../ItemListContainer/ItemListContainerComponent';
 
-// eslint-disable-next-line react/prop-types
 const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
-  console.log('navItems:', navItems);
-  console.log('cartItemCount:', cartItemCount);
-  console.log('greeting:', greeting);
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#">
-        Mi Tienda
-      </a>
+      <div className="container-fluid">
+        <a className="navbar-brand" href="#">
+          Mi Tienda
+        </a>
 
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav">
-          {navItems.map((item, index) => (
-            <NavLinkComponent key={index} href={item.href} text={item.text} />
-          ))}
-          <li className="nav-item">
-            <CartWidgetComponent itemCount={cartItemCount} />
-          </li>
-          <li className="nav-item">
-            <ItemListContainerComponent greeting={greeting} />
-          </li>
-        </ul>
+        {/* Botón de navegación para pantallas pequeñas */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* Área de colapso para pantallas pequeñas */}
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            {/* Itera sobre los elementos de navegación */}
+            {navItems.map((item, index) => (
+              <NavLinkComponent key={index} href={item.href} text={item.text} />
+            ))}
+
+            {/* Componente de carrito de compras */}
+            <li className="nav-item">
+              <CartWidgetComponent itemCount={cartItemCount} />
+            </li>
+
+            {/* Componente de lista de elementos */}
+            <li className="nav-item">
+              <ItemListContainerComponent greeting={greeting} />
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );

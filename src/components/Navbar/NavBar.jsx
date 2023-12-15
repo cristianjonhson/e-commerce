@@ -1,30 +1,40 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import CartWidget from './CartWidget';
-import ItemListContainer from '../ItemListContainer/ItemListContainer';
+/* eslint-disable react/jsx-no-undef */
+/* eslint-disable react/prop-types */
+// NavBar.jsx
 
-const NavBar = () => {
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
+import CartWidget from '../Cart/CartWidget';
+import NavLink from '../NavLink/NavLink';
+import ItemListContainer from './ItemListContainer';
+
+// eslint-disable-next-line react/prop-types
+const NavBar = ({ navItems, cartItemCount, greeting }) => {
   return (
-    <Navbar bg="body-tertiary" expand="lg">
-      <Container>
-        <Navbar.Brand href="#">Mi Tienda</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarNav" />
-        <Navbar.Collapse id="navbarNav">
-          <Nav className="ml-auto">
-            <Nav.Link href="#">Inicio</Nav.Link>
-            <Nav.Link href="#">Productos</Nav.Link>
-            <Nav.Link href="#">Contacto</Nav.Link>
-            <Nav.Link>
-              <CartWidget />
-            </Nav.Link>
-            <Nav.Link>
-              <ItemListContainer greeting="¡Bienvenido a nuestra tienda!" />
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <a className="navbar-brand" href="#">
+        Mi Tienda
+      </a>
+
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav">
+          {/* Renderiza elementos de navegación dinámicamente */}
+          {navItems.map((item, index) => (
+            <NavLink key={index} href={item.href} text={item.text} />
+          ))}
+
+          {/* Renderiza el componente CartWidget con la cantidad de elementos en el carrito */}
+          <li className="nav-item">
+            <CartWidget itemCount={cartItemCount} />
+          </li>
+
+          {/* Renderiza el componente ItemListContainer con el saludo */}
+          <li className="nav-item">
+            <ItemListContainer greeting={greeting} />
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 };
 

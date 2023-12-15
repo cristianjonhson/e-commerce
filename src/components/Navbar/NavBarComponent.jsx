@@ -4,12 +4,17 @@
 
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import CartWidget from '../Cart/CartWidget';
-import NavLink from '../NavLink/NavLink';
-import ItemListContainer from './ItemListContainer';
+import CartWidgetComponent from '../Cart/CartWidgetComponent';
+
+import NavLinkComponent from '../NavLink/NavLinkComponent';
+import ItemListContainerComponent from '../ItemListContainer/ItemListContainerComponent';
 
 // eslint-disable-next-line react/prop-types
-const NavBar = ({ navItems, cartItemCount, greeting }) => {
+const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
+  console.log('navItems:', navItems);
+  console.log('cartItemCount:', cartItemCount);
+  console.log('greeting:', greeting);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="#">
@@ -18,19 +23,14 @@ const NavBar = ({ navItems, cartItemCount, greeting }) => {
 
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
-          {/* Renderiza elementos de navegación dinámicamente */}
           {navItems.map((item, index) => (
-            <NavLink key={index} href={item.href} text={item.text} />
+            <NavLinkComponent key={index} href={item.href} text={item.text} />
           ))}
-
-          {/* Renderiza el componente CartWidget con la cantidad de elementos en el carrito */}
           <li className="nav-item">
-            <CartWidget itemCount={cartItemCount} />
+            <CartWidgetComponent itemCount={cartItemCount} />
           </li>
-
-          {/* Renderiza el componente ItemListContainer con el saludo */}
           <li className="nav-item">
-            <ItemListContainer greeting={greeting} />
+            <ItemListContainerComponent greeting={greeting} />
           </li>
         </ul>
       </div>
@@ -38,4 +38,4 @@ const NavBar = ({ navItems, cartItemCount, greeting }) => {
   );
 };
 
-export default NavBar;
+export default NavBarComponent;

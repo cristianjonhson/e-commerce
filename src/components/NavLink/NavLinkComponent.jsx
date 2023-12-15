@@ -4,7 +4,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
-const NavLink = ({ href, text }) => {
+const NavLinkComponent = ({ href, text }) => {
   return (
     <li className="nav-item">
       <a className="nav-link" href={href}>
@@ -14,4 +14,4 @@ const NavLink = ({ href, text }) => {
   );
 };
 
-export default NavLink;
+export default NavLinkComponent;

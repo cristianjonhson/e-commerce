@@ -5,7 +5,7 @@
 import React from 'react';
 import CartWidgetComponent from '../Cart/CartWidgetComponent';
 import NavLinkComponent from '../NavLink/NavLinkComponent';
-import ItemListContainerComponent from '../ItemListContainer/ItemListContainerComponent';
+import TitleComponent from '../Title/TitleComponent';
 
 // ...
 
@@ -44,7 +44,7 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
           {/* Componente de carrito de compras siempre visible */}
           <CartWidgetComponent itemCount={cartItemCount} className="d-lg-none" />
           {/* Componente de lista de elementos */}
-          <ItemListContainerComponent greeting={greeting} />
+          <TitleComponent greeting={greeting} />
         </div>
 
         

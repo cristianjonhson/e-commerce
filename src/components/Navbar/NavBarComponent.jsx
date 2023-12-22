@@ -5,7 +5,7 @@
 import React from 'react';
 import CartWidgetComponent from '../Cart/CartWidgetComponent';
 import NavLinkComponent from '../NavLink/NavLinkComponent';
-import ItemListContainerComponent from '../ItemListContainer/ItemListContainerComponent';
+import TitleComponent from '../Title/TitleComponent';
 
 // ...
 
@@ -26,6 +26,13 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
+        {/* Mi Tienda condicionado por tamaño de pantalla */}
+        <a className="navbar-brand ms-auto d-lg-none" href="#">
+          {/* Componente de carrito de compras siempre visible */}
+          <CartWidgetComponent itemCount={cartItemCount} className="d-lg-none" />
+          Mi Tienda
+        </a>
+
         {/* Área de colapso para pantallas pequeñas */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto">
@@ -34,18 +41,13 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
               <NavLinkComponent key={index} href={item.href} text={item.text} />
             ))}
           </ul>
-
-          {/* Componente de carrito de compras */}
-          <CartWidgetComponent itemCount={cartItemCount} />
-
+          {/* Componente de carrito de compras siempre visible */}
+          <CartWidgetComponent itemCount={cartItemCount} className="d-lg-none" />
           {/* Componente de lista de elementos */}
-          <ItemListContainerComponent greeting={greeting} />
+          <TitleComponent greeting={greeting} />
         </div>
 
-        {/* Mi Tienda condicionado por tamaño de pantalla */}
-        <a className="navbar-brand ms-auto d-lg-none" href="#">
-          Mi Tienda
-        </a>
+        
       </div>
     </nav>
   );

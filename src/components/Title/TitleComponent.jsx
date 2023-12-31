@@ -3,6 +3,7 @@
 
 // eslint-disable-next-line no-unused-vars
 import React from "react";
+import PropTypes from 'prop-types'
 
 // eslint-disable-next-line react/prop-types
 const TitleComponent = ({ greeting }) => {
@@ -14,3 +15,8 @@ const TitleComponent = ({ greeting }) => {
 };
 
 export default TitleComponent;
+
+TitleComponent.PropTypes = {
+  greeting: PropTypes.string
+}
+

@@ -9,7 +9,7 @@ import  { getProducts } from './services'
 const App = () => {
 
   useEffect(() => {
-    getProducts().then(response =>{console.log("products:  ",response.data.products)})
+    getProducts().then(response =>{console.log("products:  ",response.data.products)}).catch(error =>{console.warn(error)} )
   }, [])
   
   // Definir la lista de elementos de navegación

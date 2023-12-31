@@ -1,22 +1,43 @@
-/* eslint-disable react/no-unescaped-entities */
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React from "react";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
-const ItemListContainerComponent = () => {
-  return (
-    <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src="https://random.imagecdn.app/1000/250" />
-    <Card.Body>
-      <Card.Title>Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the
-        bulk of the card's content.
-      </Card.Text>
-      <Button variant="primary">Go somewhere</Button>
-    </Card.Body>
-  </Card>
-    
-  );
-}
+const ItemListContainerComponent = ({ productos }) => {
+  try {
+    // Check if productos is defined before mapping over it
+    if (!productos || productos.length === 0) {
+      return <div>No productos available</div>;
+    }
+
+    return (
+      <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+        {productos.map((producto) => {
+          return (
+            <div key={producto.id} style={{marginTop:"20px", marginBottom: "20px", width: "18rem" }}>
+              {/* Apply fixed width and height to create consistent card size */}
+              <Card style={{ width: "100%", height: "100%" }}>
+                <Card.Img
+                  variant="top"
+                  src={producto.images[0]}
+                  style={{ objectFit: "cover", height: "50%" }}
+                />
+                <Card.Body>
+                  <Card.Title>{producto.title}</Card.Title>
+                  <Card.Text>{producto.description}</Card.Text>
+                  <Card.Text>Precio: ${producto.price} Stock: {producto.stock}</Card.Text>
+                </Card.Body>
+              </Card>
+            </div>
+          );
+        })}
+      </div>
+    );
+  } catch (error) {
+    console.error("Error en ItemListContainerComponent:", error);
+    throw error; // Rethrow para que React pueda manejar el error
+  }
+};
 
 export default ItemListContainerComponent;

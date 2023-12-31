@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
@@ -6,7 +7,7 @@ import NavLinkComponent from '../NavLink/NavLinkComponent';
 import TitleComponent from '../Title/TitleComponent';
 import ItemListContainerComponent from '../ItemListContainer/ItemListContainerComponent';
 
-const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
+const NavBarComponent = ({ navItems, cartItemCount, greeting, productos }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 992);
 
   useEffect(() => {
@@ -23,7 +24,8 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+        {/* Use 'navbar-dark' and 'bg-dark' classes to set the dark background */}
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -58,7 +60,7 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
           </div>
         </div>
       </nav>
-      <ItemListContainerComponent />
+      {productos && <ItemListContainerComponent productos={productos} />}
     </div>
   );
 };

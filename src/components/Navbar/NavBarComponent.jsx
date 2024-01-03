@@ -1,13 +1,12 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+// NavBarComponent.jsx
 import React, { useState, useEffect } from 'react';
 import CartWidgetComponent from '../Cart/CartWidgetComponent';
 import NavLinkComponent from '../NavLink/NavLinkComponent';
 import TitleComponent from '../Title/TitleComponent';
-import ItemListContainerComponent from '../ItemListContainer/ItemListContainerComponent';
 
-const NavBarComponent = ({ navItems, cartItemCount, greeting, productos }) => {
+const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 992);
 
   useEffect(() => {
@@ -25,7 +24,6 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting, productos }) => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white">
-        {/* Use 'navbar-dark' and 'bg-dark' classes to set the dark background */}
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -47,7 +45,7 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting, productos }) => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto">
               {navItems.map((item, index) => (
-                <NavLinkComponent key={index} href={item.href} text={item.text} />
+                <NavLinkComponent key={index} href={item.href} text={item.text} activeClassName="active"/>
               ))}
             </ul>
 
@@ -60,7 +58,6 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting, productos }) => {
           </div>
         </div>
       </nav>
-      {productos && <ItemListContainerComponent productos={productos} />}
     </div>
   );
 };

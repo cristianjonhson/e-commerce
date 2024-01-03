@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-// NavBarComponent.jsx
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import CartWidgetComponent from '../Cart/CartWidgetComponent';
 import NavLinkComponent from '../NavLink/NavLinkComponent';
 import TitleComponent from '../Title/TitleComponent';
 
-const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
+const NavBarComponent = ({ cartItemCount, greeting, routes }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 992);
 
   useEffect(() => {
@@ -44,8 +44,8 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto">
-              {navItems.map((item, index) => (
-                <NavLinkComponent key={index} href={item.href} text={item.text} activeClassName="active"/>
+              {routes.map((route, index) => (
+                <NavLinkComponent key={index} to={route.path} text={route.text} activeClassName="active" />
               ))}
             </ul>
 
@@ -63,3 +63,4 @@ const NavBarComponent = ({ navItems, cartItemCount, greeting }) => {
 };
 
 export default NavBarComponent;
+

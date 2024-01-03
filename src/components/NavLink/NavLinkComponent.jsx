@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const NavLinkComponent = ({ to, text }) => {
   return (
     <li className="nav-item">
-      <Link to={to} className="nav-link" activeClassName="active">
+      <Link to={to} className="nav-link">
         {text}
       </Link>
     </li>

@@ -45,7 +45,7 @@ const NavBarComponent = ({ cartItemCount, greeting, routes }) => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto">
               {routes.map((route, index) => (
-                <NavLinkComponent key={index} to={route.path} text={route.text} activeClassName="active" />
+                <NavLinkComponent key={index} to={route.path} text={route.text}/>
               ))}
             </ul>
 

@@ -1,17 +1,20 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-// NavLink.jsx (Ejemplo de componente de enlace)
-
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+// NavLinkComponent.jsx
 
-const NavLinkComponent = ({ href, text }) => {
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const NavLinkComponent = ({ to, text }) => {
   return (
     <li className="nav-item">
-      <a className="nav-link" href={href}>
+      <Link to={to} className="nav-link" activeClassName="active">
         {text}
-      </a>
+      </Link>
     </li>
   );
 };
 
 export default NavLinkComponent;
+

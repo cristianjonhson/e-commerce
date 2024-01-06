@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import ItemListContainerComponent from '../components/ItemListContainer/ItemListContainerComponent';
 import NavBarComponent from '../components/Navbar/NavBarComponent';
+import ItemDetailContainerComponent from '../components/ItemDetailContainer/ItemDetailContainerComponent';
 
 const MainRouter = ({ productos }) => {
   const greeting = "¡Bienvenido a nuestra tienda!";
@@ -15,7 +16,7 @@ const MainRouter = ({ productos }) => {
   const routes = [
     { path: "/", text: "Inicio", element: <Home /> },
     { path: "/productos", text: "Productos", element: productos && <ItemListContainerComponent productos={productos} /> },
-    
+    { path: "/item/:id", element: <ItemDetailContainerComponent/> },
   ];
 
   return (

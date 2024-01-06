@@ -14,9 +14,11 @@ const TitleComponent = ({ greeting }) => {
   );
 };
 
+TitleComponent.propTypes = {
+  greeting: PropTypes.string.isRequired,
+};
+
 export default TitleComponent;
 
-TitleComponent.PropTypes = {
-  greeting: PropTypes.string
-}
+
 

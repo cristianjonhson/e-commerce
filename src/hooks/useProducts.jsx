@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import { useEffect, useState } from "react";
-import { getProducts } from "../services";
+import { getProducts, getProductsById } from "../services";
 import { UseGetLoading } from "./useLoading";
 
 export const UseGetProducts = () => {
@@ -25,4 +25,28 @@ export const UseGetProducts = () => {
   }, []); // El segundo argumento es un array vacío, lo que significa que este efecto solo se ejecuta una vez, equivalente a componentDidMount en componentes de clase
 
   return { productos, loading };
+};
+
+
+export const UseGetProductsById = (id) => {
+  const [productosbyId, setProductosById] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Check if id is valid before making the API request
+        if (id !== null) {
+          const response = await getProductsById(id);
+          console.log("API Response for product with ID", id, ":", response.data);
+          setProductosById(response.data);
+        }
+      } catch (error) {
+        console.warn(error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+  
+  return { productosbyId };
 };

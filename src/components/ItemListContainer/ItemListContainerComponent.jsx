@@ -3,6 +3,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from 'react-router-dom';
 
 const ItemListContainerComponent = ({ productos }) => {
   try {
@@ -17,18 +18,20 @@ const ItemListContainerComponent = ({ productos }) => {
           return (
             <div key={producto.id} style={{marginTop:"20px", marginBottom: "20px", width: "18rem" }}>
               {/* Apply fixed width and height to create consistent card size */}
-              <Card style={{ width: "100%", height: "100%" }}>
-                <Card.Img
-                  variant="top"
-                  src={producto.images[0]}
-                  style={{ objectFit: "cover", height: "50%" }}
-                />
-                <Card.Body>
-                  <Card.Title>{producto.title}</Card.Title>
-                  <Card.Text>{producto.description}</Card.Text>
-                  <Card.Text>Precio: ${producto.price} Stock: {producto.stock}</Card.Text>
-                </Card.Body>
-              </Card>
+              <Link to={`/item/${producto.id}`}>
+                <Card style={{ width: "100%", height: "100%" }}>
+                  <Card.Img
+                    variant="top"
+                    src={producto.images[0]}
+                    style={{ objectFit: "cover", height: "50%" }}
+                  />
+                  <Card.Body>
+                    <Card.Title>{producto.title}</Card.Title>
+                    <Card.Text>{producto.description}</Card.Text>
+                    <Card.Text>Precio: ${producto.price} Stock: {producto.stock}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Link>
             </div>
           );
         })}

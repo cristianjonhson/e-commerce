@@ -28,18 +28,17 @@ export const UseGetProducts = () => {
 };
 
 
+
 export const UseGetProductsById = (id) => {
-  const [productosbyId, setProductosById] = useState({});
+  const [productoById, setProductoById] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Check if id is valid before making the API request
         if (id !== null) {
-          // el await sirve para esperar que la llamada a la api sea exitosa
           const response = await getProductsById(id);
           console.log("API Response for product with ID", id, ":", response.data);
-          setProductosById(response.data.products);
+          setProductoById(response.data);  // Assuming the response is an object
         }
       } catch (error) {
         console.warn(error);
@@ -48,9 +47,10 @@ export const UseGetProductsById = (id) => {
 
     fetchData();
   }, [id]);
-  
-  return { productosbyId };
+
+  return { productoById };
 };
+
 
 export const UseGetProductsByCategory = (category) => {
   const [productos, setProductos] = useState([]);

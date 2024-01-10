@@ -28,6 +28,8 @@ const ItemDetailContainerComponent = ({ id }) => {
         <Card.Body>
           <Card.Title>{productosbyId.title}</Card.Title>
           <Card.Text>{productosbyId.description}</Card.Text>
+          <Card.Text>Brand: {productosbyId.brand}</Card.Text>
+          <Card.Text>Category: {productosbyId.category}</Card.Text>
           <Card.Text>Precio: ${productosbyId.price} Stock: {productosbyId.stock}</Card.Text>
         </Card.Body>
       </Card>

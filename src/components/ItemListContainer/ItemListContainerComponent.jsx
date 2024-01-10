@@ -18,20 +18,20 @@ const ItemListContainerComponent = ({ productos }) => {
           return (
             <div key={producto.id} style={{marginTop:"20px", marginBottom: "20px", width: "18rem" }}>
               {/* Apply fixed width and height to create consistent card size */}
-              <Link to={`/item/${producto.id}`}>
-                <Card style={{ width: "100%", height: "100%" }}>
-                  <Card.Img
-                    variant="top"
-                    src={producto.images[0]}
-                    style={{ objectFit: "cover", height: "50%" }}
+              <Card style={{ width: "100%", height: "100%" }}>
+                <Link to={`/item/${producto.id}`}>
+                <Card.Img
+                  variant="top"
+                  src={producto.images[0]}
+                  style={{ objectFit: "cover", height: "50%", margin: 0, padding: 0 }}
                   />
-                  <Card.Body>
-                    <Card.Title>{producto.title}</Card.Title>
-                    <Card.Text>{producto.description}</Card.Text>
-                    <Card.Text>Precio: ${producto.price} Stock: {producto.stock}</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
+                </Link>
+                <Card.Body>
+                  <Card.Title>{producto.title}</Card.Title>
+                  <Card.Text>{producto.description}</Card.Text>
+                  <Card.Text>Precio: ${producto.price} Stock: {producto.stock}</Card.Text>
+                </Card.Body>
+              </Card>
             </div>
           );
         })}

@@ -1,10 +1,12 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import CartWidgetComponent from '../Cart/CartWidgetComponent';
 import NavLinkComponent from '../NavLink/NavLinkComponent';
 import TitleComponent from '../Title/TitleComponent';
+import NavDropdownComponent from '../NavDropdown/NavDropdownComponent';
+
 
 const NavBarComponent = ({ cartItemCount, greeting, routes }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 992);
@@ -47,6 +49,9 @@ const NavBarComponent = ({ cartItemCount, greeting, routes }) => {
               {routes.map((route, index) => (
                 <NavLinkComponent key={index} to={route.path} text={route.text}/>
               ))}
+
+               {/* Use the NavDropdownComponent here */}
+               <NavDropdownComponent />
             </ul>
 
             {!isSmallScreen && (

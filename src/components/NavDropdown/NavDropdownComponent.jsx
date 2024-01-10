@@ -3,19 +3,20 @@
 import React from 'react';
 import { NavDropdown } from 'react-bootstrap';
 import { useCategory } from '../../hooks/useCategory';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const NavDropdownComponent = () => {
+    const { category } = useCategory();
 
-    const {category} = useCategory();
-
-  return (
-    <NavDropdown title="Categorias" id="nav-dropdown">
-       { category.map((item , index ) => {
-            return <NavDropdown.Item key={index}> {item} </NavDropdown.Item>
-            })
-        }
-    </NavDropdown>
-  );
+    return (
+        <NavDropdown title="Categorias" id="nav-dropdown">
+            {category.map((item, index) => (
+                <LinkContainer to={`/category/${item}`} key={index}>
+                    <NavDropdown.Item>{item}</NavDropdown.Item>
+                </LinkContainer>
+            ))}
+        </NavDropdown>
+    );
 };
 
 export default NavDropdownComponent;

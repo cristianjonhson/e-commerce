@@ -16,7 +16,7 @@ const MainRouter = ({ productos }) => {
     { path: "/", text: "Inicio", element: <Home /> },
     { path: "/productos", text: "Productos", element: productos && <ItemListContainerComponent productos={productos} /> },
     { path: "/item/:id", element: <ItemDetailRoute /> },
-    { path: "/category/:id", element: <Category/> },
+    { path: "/category/:id", element: productos &&  <Category productos={productos} /> },
   ];
 
   return (

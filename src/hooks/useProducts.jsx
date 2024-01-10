@@ -36,6 +36,7 @@ export const UseGetProductsById = (id) => {
       try {
         // Check if id is valid before making the API request
         if (id !== null) {
+          // el await sirve para esperar que la llamada a la api sea exitosa
           const response = await getProductsById(id);
           console.log("API Response for product with ID", id, ":", response.data);
           setProductosById(response.data);

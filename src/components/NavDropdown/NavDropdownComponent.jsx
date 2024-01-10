@@ -2,15 +2,18 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { NavDropdown } from 'react-bootstrap';
+import { useCategory } from '../../hooks/useCategory';
 
 const NavDropdownComponent = () => {
+
+    const {category} = useCategory();
+
   return (
-    <NavDropdown title="Dropdown" id="nav-dropdown">
-      <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-      <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-      <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-      <NavDropdown.Divider />
-      <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+    <NavDropdown title="Categorias" id="nav-dropdown">
+       { category.map((item , index ) => {
+            return <NavDropdown.Item key={index}> {item} </NavDropdown.Item>
+            })
+        }
     </NavDropdown>
   );
 };

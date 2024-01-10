@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import { useEffect, useState } from "react";
-import { getProducts, getProductsById } from "../services";
+import { getProductsByCategory, getProducts, getProductsById } from "../services";
 import { UseGetLoading } from "./useLoading";
 
 export const UseGetProducts = () => {
@@ -39,7 +39,7 @@ export const UseGetProductsById = (id) => {
           // el await sirve para esperar que la llamada a la api sea exitosa
           const response = await getProductsById(id);
           console.log("API Response for product with ID", id, ":", response.data);
-          setProductosById(response.data);
+          setProductosById(response.data.products);
         }
       } catch (error) {
         console.warn(error);
@@ -51,3 +51,30 @@ export const UseGetProductsById = (id) => {
   
   return { productosbyId };
 };
+
+export const UseGetProductsByCategory = (category) => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Check if category is valid before making the API request
+        if (category !== null) {
+          // el await sirve para esperar que la llamada a la api sea exitosa
+          const response = await getProductsByCategory(category);
+          console.log("API Response for products in category", category, ":", response.data);
+
+          // Assuming the response structure has a 'products' property
+          setProductos(response.data.products);
+        }
+      } catch (error) {
+        console.warn(error);
+      }
+    };
+
+    fetchData();
+  }, [category]);
+  
+  return { productos };
+};
+

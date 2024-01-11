@@ -17,24 +17,25 @@ const ItemDetailContainerComponent = ({ id }) => {
     return <div>No product found for ID: {id}</div>;
   }
 
-  return (
-    <div style={{ marginTop: '20px', marginBottom: '20px', width: '18rem' }}>
-      <Card key={productoById.id} style={{ width: '100%', height: '100%' }}>
+  return ( <div>
+    <h1 style={{ textAlign: "center" }}>Producto Detalle</h1>
+    <div style={{  display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
+      <Card key={productoById.id} style={{ marginTop: "20px", marginBottom: "20px", width: "16rem", backgroundColor: "#f0f0f0"  }}>
         <Card.Img
           variant="top"
           src={productoById.thumbnail}
           style={{ objectFit: 'cover', height: '50%' }}
         />
-        <Card.Body>
-          <Card.Title>{productoById.title}</Card.Title>
-          <Card.Text>{productoById.description}</Card.Text>
-          <Card.Text>Brand: {productoById.brand}</Card.Text>
-          <Card.Text>Category: {productoById.category}</Card.Text>
-          <Card.Text>
-            Precio: ${productoById.price} Stock: {productoById.stock}
-          </Card.Text>
+        <Card.Body style={{ padding: "15px"}}>
+          <Card.Title style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{productoById.title}</Card.Title>
+          <Card.Text style={{ marginBottom: "10px" }}>{productoById.description}</Card.Text>
+          <Card.Text style={{ fontSize: "1.2rem", color: "green", fontWeight: "bold",  fontStyle: "italic" }}>Brand: {productoById.brand}</Card.Text>
+          <Card.Text style={{ fontSize: "1.2rem", color: "green", fontWeight: "bold",  fontStyle: "italic" }}>Category: {productoById.category}</Card.Text>
+          <Card.Text style={{ fontSize: "1.2rem", color: "blue", fontWeight: "bold",  fontStyle: "italic" }}>Precio: ${productoById.price}</Card.Text>
+          <Card.Text style={{ fontSize: "1.2rem", color: "blue", fontWeight: "bold",  fontStyle: "italic"  }}>Stock: {productoById.stock}</Card.Text>
         </Card.Body>
       </Card>
+    </div>
     </div>
   );
 };

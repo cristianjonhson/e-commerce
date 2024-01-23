@@ -2,12 +2,12 @@
 // eslint-disable-next-line no-unused-vars
 import { useEffect, useState } from "react";
 import { getProductsByCategory, getProducts, getProductsById } from "../services";
-import { UseGetLoading } from "./useLoading";
+
 
 export const UseGetProducts = () => {
   // Utilizamos useState para gestionar el estado de la variable 'productos'
   const [productos, setProductos] = useState([]);
-  const { loading } = UseGetLoading();
+
 
   // Utilizamos useEffect para realizar una llamada a la API cuando el componente se monta
   useEffect(() => {
@@ -24,7 +24,7 @@ export const UseGetProducts = () => {
       });
   }, []); // El segundo argumento es un array vacío, lo que significa que este efecto solo se ejecuta una vez, equivalente a componentDidMount en componentes de clase
 
-  return { productos, loading };
+  return { productos };
 };
 
 

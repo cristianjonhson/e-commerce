@@ -1,17 +1,16 @@
-// CartWidget.js
-
-// eslint-disable-next-line no-unused-vars
-import React from "react";
+// CartWidgetComponent.js
+import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { CartContext } from "../../context/CartContext";
 
 const CartWidgetComponent = () => {
-  const cartItemCount = 15;
+  const { getCount } = useContext(CartContext);
 
   return (
     <div className="cart-widget">
       <FontAwesomeIcon icon={faShoppingCart} />
-      <span className="badge-primary">{cartItemCount}</span>
+      <span className="badge-primary">{getCount()}</span>
     </div>
   );
 };

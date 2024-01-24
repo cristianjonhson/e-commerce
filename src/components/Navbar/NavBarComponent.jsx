@@ -25,7 +25,7 @@ const NavBarComponent = ({ cartItemCount, greeting, routes }) => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white fixed-top">
         <div className="container-fluid">
           <button
             className="navbar-toggler"

@@ -7,6 +7,7 @@ import ItemListContainerComponent from '../components/ItemListContainer/ItemList
 import NavBarComponent from '../components/Navbar/NavBarComponent';
 import ItemDetailContainerComponent from '../components/ItemDetailContainer/ItemDetailContainerComponent';
 import Category from '../pages/Category';
+import CartDetailComponent from '../components/Cart/CartDetailComponent';
 
 const MainRouter = ({ productos }) => {
   const greeting = "¡Bienvenido a nuestra tienda!";
@@ -16,7 +17,9 @@ const MainRouter = ({ productos }) => {
     { path: "/", text: "Inicio", element: <Home /> },
     { path: "/productos", text: "Productos", element: productos && <ItemListContainerComponent productos={productos} /> },
     { path: "/item/:id", element: <ItemDetailRoute /> },
-    { path: "/category/:id", element: productos &&  <Category productos={productos} /> },
+    { path: "/category/:id", element: productos && <Category productos={productos} /> },
+    { path: "/cart", text: "Carrito", element: <CartDetailComponent /> },
+    
   ];
 
   return (

@@ -5,10 +5,32 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import useLoadingAlert from "../../hooks/useLoadingAlert";
 
 const ItemListContainerComponent = ({ productos }) => {
   const [quantities, setQuantities] = useState({});
   const { incrementCount } = useContext(CartContext);
+
+  const { loading } = useLoadingAlert(
+    async () => {
+      // Lógica de carga de datos
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+    },
+    () => {
+      // Lógica después de la carga exitosa
+      console.log('Carga exitosa');
+    },
+    () => {
+      // Lógica después de un error en la carga
+      console.log('Error en la carga');
+    },
+    5000, // Delay
+    'Cargando producto' // Título personalizado
+  ); 
+    // Mostrar los productos solo después de que la carga haya finalizado y la alerta se haya cerrado
+    if (loading) {
+      return null;
+    }
 
   const handleQuantityChange = (productId, newQuantity) => {
     setQuantities((prevQuantities) => ({
@@ -22,27 +44,7 @@ const ItemListContainerComponent = ({ productos }) => {
 
     return (
       <div className="d-flex align-items-center">
-        <Button
-          variant="outline-primary"
-          size="sm"
-          onClick={() => handleQuantityChange(productId, quantity - 1)}
-        >
-          -
-        </Button>
-        <input
-          type="number"
-          value={quantity}
-          min="0"
-          style={{ width: "50px", textAlign: "center", margin: "0 5px" }}
-          readOnly
-        />
-        <Button
-          variant="outline-primary"
-          size="sm"
-          onClick={() => handleQuantityChange(productId, quantity + 1)}
-        >
-          +
-        </Button>
+      
         <Button
           variant="primary"
           size="sm"

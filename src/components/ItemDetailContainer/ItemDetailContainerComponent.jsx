@@ -24,13 +24,7 @@ const ItemDetailContainerComponent = ({ id }) => {
     },
     5000, // Delay
     'Cargando producto' // Título personalizado
-  );
-  
-
-  if (loading) {
-    return null;
-  }
-
+  ); 
     // Mostrar los productos solo después de que la carga haya finalizado y la alerta se haya cerrado
     if (loading) {
       return null;

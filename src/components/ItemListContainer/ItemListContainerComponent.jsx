@@ -2,10 +2,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useContext } from "react";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import useLoadingAlert from "../../hooks/useLoadingAlert";
+import ItemCountComponent from "../ItemCount/ItemCountComponent";
 
 const ItemListContainerComponent = ({ productos }) => {
   const [quantities, setQuantities] = useState({});
@@ -37,27 +37,6 @@ const ItemListContainerComponent = ({ productos }) => {
       ...prevQuantities,
       [productId]: newQuantity,
     }));
-  };
-
-  const renderQuantityInput = (productId) => {
-    const quantity = quantities[productId] || 0;
-
-    return (
-      <div className="d-flex align-items-center">
-      
-        <Button
-          variant="primary"
-          size="sm"
-          style={{ marginLeft: "10px" }}
-          onClick={() => {
-            incrementCount(); // Incrementar el contador general
-            // Aquí puedes agregar la lógica específica para agregar al carrito
-          }}
-        >
-          Agregar
-        </Button>
-      </div>
-    );
   };
 
   return (
@@ -108,7 +87,11 @@ const ItemListContainerComponent = ({ productos }) => {
                 >
                   Stock: {producto.stock}
                 </Card.Text>
-                {renderQuantityInput(producto.id)}
+                <ItemCountComponent
+                  productId={producto.id}
+                  onQuantityChange={(newQuantity) => handleQuantityChange(producto.id, newQuantity)}
+                  incrementCount={incrementCount}
+                />
               </Card.Body>
             </Card>
           </div>

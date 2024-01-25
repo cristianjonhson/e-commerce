@@ -1,18 +1,22 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { NavDropdown } from 'react-bootstrap';
 import { useCategory } from '../../hooks/useCategory';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const NavDropdownComponent = () => {
-    const { category } = useCategory();
+    const { categories } = useCategory();
+
+    // Verifica si categories es un array antes de mapear sobre él
+    if (!Array.isArray(categories) || categories.length === 0) {
+        return null; // Puedes mostrar un mensaje o simplemente no renderizar nada
+    }
 
     return (
         <NavDropdown title="Categorias" id="nav-dropdown">
-            {category.map((item, index) => (
-                <LinkContainer to={`/category/${item}`} key={index}>
-                    <NavDropdown.Item>{item}</NavDropdown.Item>
+            {categories.map((category, index) => (
+                <LinkContainer to={`/category/${category}`} key={index}>
+                    <NavDropdown.Item>{category}</NavDropdown.Item>
                 </LinkContainer>
             ))}
         </NavDropdown>

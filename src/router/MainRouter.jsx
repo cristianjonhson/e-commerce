@@ -8,18 +8,19 @@ import NavBarComponent from '../components/Navbar/NavBarComponent';
 import ItemDetailContainerComponent from '../components/ItemDetailContainer/ItemDetailContainerComponent';
 import Category from '../pages/Category';
 import CartDetailComponent from '../components/Cart/CartDetailComponent';
+import ProductFormComponent from '../components/ProductForm/addProductFormComponent';
 
 const MainRouter = ({ productos }) => {
   const greeting = "¡Bienvenido a nuestra tienda!";
 
-  // Define the routes for MainRouter
+  // Define las rutas para MainRouter
   const routes = [
     { path: "/", text: "Inicio", element: <Home /> },
     { path: "/productos", text: "Productos", element: productos && <ItemListContainerComponent productos={productos} /> },
     { path: "/item/:id", element: <ItemDetailRoute /> },
     { path: "/category/:id", element: productos && <Category productos={productos} /> },
-    { path: "/cart", text: "Carrito", element: <CartDetailComponent /> },
-    
+    { path: "/cart", element: <CartDetailComponent /> },
+    { path: "/crear-producto", text: "Crear Producto", element: <ProductFormComponent /> }, // Nueva ruta para el formulario de creación de productos
   ];
 
   return (
@@ -38,14 +39,12 @@ const MainRouter = ({ productos }) => {
   );
 };
 
-// New component to handle ItemDetailContainerComponent with valid id
 const ItemDetailRoute = () => {
   const { id } = useParams();
 
-  if (id === null || id === undefined) {
-    // Handle the case where id is null or undefined
-    console.log("No valid ID provided");
-    return <div>No valid ID provided</div>;
+  if (!id) {
+    // Muestra un mensaje cuando id es null o undefined
+    return <div>No se proporcionó un ID válido.</div>;
   }
 
   return <ItemDetailContainerComponent id={id} />;

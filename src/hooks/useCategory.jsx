@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { collection, getDocs, getFirestore, addDoc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/firebaseConfig';
 
@@ -38,4 +38,31 @@ export const useCategory = () => {
   }, [db]);
 
   return { categories };
+};
+
+export const useCategoryOperations = () => {
+  const [error, setError] = useState(null);
+
+  const addCategory = async (newCategory) => {
+    try {
+      const categoriesCollection = collection(db, 'categories');
+      await addDoc(categoriesCollection, { categories: [newCategory] });
+
+      // Actualizar el estado local si es necesario
+      // Puedes volver a consultar las categorías aquí si lo deseas
+
+      console.log('Categoría agregada exitosamente.');
+      return { success: true };
+    } catch (error) {
+      console.error('Error adding category:', error);
+      setError(error.message);
+      return { success: false, error: error.message };
+    }
+  };
+
+  const clearError = () => {
+    setError(null);
+  };
+
+  return { addCategory, error, clearError };
 };

@@ -9,6 +9,7 @@ import ItemDetailContainerComponent from '../components/ItemDetailContainer/Item
 import Category from '../pages/Category';
 import CartDetailComponent from '../components/Cart/CartDetailComponent';
 import ProductFormComponent from '../components/ProductForm/addProductFormComponent';
+import AddCategoryFormComponent from '../components/CategoryForm/addCategoryFormComponent'; // Importa el nuevo componente de formulario de categoría
 
 const MainRouter = ({ productos }) => {
   const greeting = "¡Bienvenido a nuestra tienda!";
@@ -20,7 +21,8 @@ const MainRouter = ({ productos }) => {
     { path: "/item/:id", element: <ItemDetailRoute /> },
     { path: "/category/:id", element: productos && <Category productos={productos} /> },
     { path: "/cart", element: <CartDetailComponent /> },
-    { path: "/crear-producto", text: "Crear Producto", element: <ProductFormComponent /> }, // Nueva ruta para el formulario de creación de productos
+    { path: "/crear-producto", text: "Crear Producto", element: <ProductFormComponent /> },
+    { path: "/crear-categoria", text: "Crear Categoría", element: <AddCategoryFormComponent /> }, // Nueva ruta para el formulario de creación de categorías
   ];
 
   return (
